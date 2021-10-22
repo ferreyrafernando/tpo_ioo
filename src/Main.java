@@ -1,6 +1,9 @@
 import com.app.ActionListenerBotonAceptar;
 import com.app.negocio.Odontologo;
 import com.app.service.OdontologoService;
+import com.app.ui.PanelFormularioOdontologo;
+import com.app.ui.PanelListaOdontologo;
+import com.app.ui.PanelManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +17,9 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("DAO");
-
-        OdontologoService service = new OdontologoService();
   /*
+        OdontologoService service = new OdontologoService();
+
         Odontologo odontologo = new Odontologo();
         odontologo.setId(0);
         odontologo.setMatricula(4321);
@@ -28,7 +31,7 @@ public class Main {
         odontologo2.setMatricula(1234);
 
         service.guardar(odontologo2);
-*/
+
 
 
         ArrayList<Odontologo> lista = service.listar();
@@ -43,7 +46,7 @@ public class Main {
         for(Odontologo od:lista2)
             System.out.println(od.getId() + " " + od.getMatricula());
 
-/*
+
         JFrame frame = new JFrame();
         frame.setBounds(200,200,500,500);
         frame.setVisible(true);
@@ -90,6 +93,11 @@ public class Main {
         panel.add(txtNombre, BorderLayout.EAST);
 
      */
+
+        PanelManager panelManager = new PanelManager();
+        panelManager.armarManager();
+        panelManager.showFrame();
+        panelManager.mostrarListadoOdontologo();
     }
 
 

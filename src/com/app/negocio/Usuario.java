@@ -1,19 +1,19 @@
 package com.app.negocio;
 
 public class Usuario {
-    private String userName;
+    private String usuario;
     private String password;
 
     public Usuario() {
         //Constructor
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsuario(String userName) {
+        this.usuario = userName;
     }
 
     public String getPassword() {
@@ -24,7 +24,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public Usuario login(String user, String pass){
+    public Usuario login(String usuario, String password){
         Usuario userLogged = new Usuario();
 
         return userLogged;
