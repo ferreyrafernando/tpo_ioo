@@ -1,4 +1,6 @@
-package com.app.paciente;
+package com.app.dao;
+
+import com.app.negocio.Paciente;
 
 public interface IPacienteDAO {
 

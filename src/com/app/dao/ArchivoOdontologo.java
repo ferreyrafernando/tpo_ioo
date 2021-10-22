@@ -1,4 +1,6 @@
-package com.app.odontologo;
+package com.app.dao;
+
+import com.app.negocio.Odontologo;
 
 import java.io.*;
 import java.util.ArrayList;

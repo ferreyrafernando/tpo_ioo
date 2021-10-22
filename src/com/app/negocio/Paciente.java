@@ -1,7 +1,5 @@
-package com.app.paciente;
+package com.app.negocio;
 
-import com.app.persona.Persona;
-import com.app.usuario.Usuario;
 import java.util.Date;
 
 public class Paciente extends Persona {

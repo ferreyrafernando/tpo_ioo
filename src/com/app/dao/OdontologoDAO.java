@@ -1,8 +1,8 @@
-package com.app.odontologo;
+package com.app.dao;
 
-import java.io.FileInputStream;
+import com.app.negocio.Odontologo;
+
 import java.util.ArrayList;
-import java.util.Random;
 
 public class OdontologoDAO implements IOdontologoDAO{
 

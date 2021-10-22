@@ -1,7 +1,5 @@
-package com.app.turno;
+package com.app.negocio;
 
-import com.app.odontologo.Odontologo;
-import com.app.paciente.Paciente;
 import java.util.Date;
 
 public class Turno {

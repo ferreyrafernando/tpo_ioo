@@ -1,6 +1,6 @@
-package com.app.paciente;
+package com.app.dao;
 
-import java.io.FileInputStream;
+import com.app.negocio.Paciente;
 
 public class PacienteDAO implements IPacienteDAO{
 

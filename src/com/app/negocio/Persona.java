@@ -1,6 +1,4 @@
-package com.app.persona;
-
-import com.app.usuario.Usuario;
+package com.app.negocio;
 
 public class Persona {
 

@@ -1,4 +1,4 @@
-package com.app.usuario;
+package com.app.negocio;
 
 public class Usuario {
     private String userName;

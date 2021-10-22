@@ -1,4 +1,4 @@
-package com.app.paciente;
+package com.app.dao;
 
 public class ArchivoPaciente {
 }
