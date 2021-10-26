@@ -1,4 +1,3 @@
-import com.app.ActionListenerBotonAceptar;
 import com.app.negocio.Odontologo;
 import com.app.service.OdontologoService;
 import com.app.ui.PanelFormularioOdontologo;
@@ -97,7 +96,7 @@ public class Main {
         PanelManager panelManager = new PanelManager();
         panelManager.armarManager();
         panelManager.showFrame();
-        panelManager.mostrarListadoOdontologo();
+        panelManager.mostrarPantallaLogin();
     }
 
 
