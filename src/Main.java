@@ -96,7 +96,7 @@ public class Main {
         PanelManager panelManager = new PanelManager();
         panelManager.armarManager();
         panelManager.showFrame();
-        panelManager.mostrarPantallaLogin();
+        panelManager.mostrarMenuPrincipal();
     }
 
 

@@ -32,7 +32,7 @@ public class PanelLogin extends JPanel implements ActionListener {
     private JLabel mensaje;
 
     public void armarPanelLogin(PanelManager panelManager){
-        //Seteamos la base y le ponemos el icono
+        //Seteamos el panel manager y el layout
         this.panelManager=panelManager;
         setLayout(new BorderLayout());
 
@@ -126,6 +126,7 @@ public class PanelLogin extends JPanel implements ActionListener {
         //Armamos el boton para logear
         logeo=new JButton("Login");
         logeo.setBackground(new Color(78,200,207));
+        logeo.setOpaque(true);
         logeo.addActionListener(this);
 
         //Hacemos el espacio para el mensaje de error

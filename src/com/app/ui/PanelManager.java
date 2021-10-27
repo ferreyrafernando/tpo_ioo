@@ -11,6 +11,7 @@ public class PanelManager {
     private PanelListaOdontologo panelListaOdontologo;
     private PanelFormularioOdontologo panelFormularioOdontologo;
     private PanelLogin PanelLogin;
+    private PanelMenuPrincipal PanelMenuPrincipal;
     private JFrame jframe;
 
     public void showFrame(){
@@ -20,7 +21,7 @@ public class PanelManager {
     public void armarManager(){
 
         jframe = new JFrame();
-        jframe.setBounds(200,200,800,600);
+        jframe.setBounds(500,250,800,600);
         try{
             BufferedImage icono= ImageIO.read(new File("./resources/iconexe.png"));
             jframe.setIconImage(icono);
@@ -34,6 +35,9 @@ public class PanelManager {
 
         PanelLogin=new PanelLogin();
         PanelLogin.armarPanelLogin(this);
+
+        PanelMenuPrincipal=new PanelMenuPrincipal();
+        PanelMenuPrincipal.armarPanelMenuPrincipal(this);
 
         panelListaOdontologo = new PanelListaOdontologo();
         panelListaOdontologo.armarPanelListaOdontologo(this);
@@ -57,6 +61,13 @@ public class PanelManager {
     public void mostrarPantallaLogin(){
         jframe.getContentPane().removeAll();
         jframe.getContentPane().add(PanelLogin);
+        jframe.getContentPane().validate();
+        jframe.getContentPane().repaint();
+    }
+
+    public void mostrarMenuPrincipal(){
+        jframe.getContentPane().removeAll();
+        jframe.getContentPane().add(PanelMenuPrincipal);
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }
