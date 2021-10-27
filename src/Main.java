@@ -1,5 +1,7 @@
 import com.app.negocio.Odontologo;
 import com.app.service.OdontologoService;
+import com.app.negocio.Usuario;
+import com.app.service.UsuarioService;
 import com.app.ui.PanelFormularioOdontologo;
 import com.app.ui.PanelListaOdontologo;
 import com.app.ui.PanelManager;
@@ -16,36 +18,31 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("DAO");
-  /*
-        OdontologoService service = new OdontologoService();
 
-        Odontologo odontologo = new Odontologo();
-        odontologo.setId(0);
-        odontologo.setMatricula(4321);
+        UsuarioService service = new UsuarioService();
+/*
+        Usuario usuario = new Usuario();
+        usuario.setId(0);
+        usuario.setUsuario("admin");
+        usuario.setPassword("1234");
 
-        service.guardar(odontologo);
+        service.guardar(usuario);
 
-        Odontologo odontologo2 = new Odontologo();
-        odontologo2.setId(0);
-        odontologo2.setMatricula(1234);
+        Usuario usuario2 = new Usuario();
+        usuario2.setId(0);
+        usuario2.setUsuario("facundo");
+        usuario2.setPassword("1234");
 
-        service.guardar(odontologo2);
-
-
-
-        ArrayList<Odontologo> lista = service.listar();
-
-        for(Odontologo od:lista)
-            System.out.println(od.getId() + " " + od.getMatricula());
-
-        service.eliminar(2);
-
-        ArrayList<Odontologo> lista2 = service.listar();
-
-        for(Odontologo od:lista2)
-            System.out.println(od.getId() + " " + od.getMatricula());
+        service.guardar(usuario2);
 
 
+
+        ArrayList<Usuario> lista = service.listar();
+
+        for(Usuario us:lista)
+            System.out.println(us.getId() + " " + us.getUsuario());
+*/
+/*
         JFrame frame = new JFrame();
         frame.setBounds(200,200,500,500);
         frame.setVisible(true);
@@ -96,7 +93,7 @@ public class Main {
         PanelManager panelManager = new PanelManager();
         panelManager.armarManager();
         panelManager.showFrame();
-        panelManager.mostrarMenuPrincipal();
+        panelManager.mostrarPantallaLogin();
     }
 
 

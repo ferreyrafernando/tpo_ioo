@@ -65,7 +65,7 @@ public class PanelManager {
         jframe.getContentPane().repaint();
     }
 
-    public void mostrarMenuPrincipal(){
+    public void mostrarPantallaMenuPrincipal(){
         jframe.getContentPane().removeAll();
         jframe.getContentPane().add(PanelMenuPrincipal);
         jframe.getContentPane().validate();
