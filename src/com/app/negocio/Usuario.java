@@ -1,8 +1,20 @@
 package com.app.negocio;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private String usuario;
     private String password;
+
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public Usuario() {
         //Constructor

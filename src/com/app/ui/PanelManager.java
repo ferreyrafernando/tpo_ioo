@@ -61,5 +61,12 @@ public class PanelManager {
         jframe.getContentPane().repaint();
     }
 
+    public void mostrarPantallaMenuPrincipal(){
+        jframe.getContentPane().removeAll();
+        jframe.getContentPane().add(panelListaOdontologo); //Cambiar esta linea por el Panel de Menu Principal
+        jframe.getContentPane().validate();
+        jframe.getContentPane().repaint();
+    }
+
 
 }

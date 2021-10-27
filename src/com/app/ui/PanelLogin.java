@@ -1,5 +1,8 @@
 package com.app.ui;
 
+import com.app.negocio.Usuario;
+import com.app.service.UsuarioService;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,7 +57,7 @@ public class PanelLogin extends JPanel implements ActionListener {
 
 
         //Aca vamos a poner el icono, subtitulo y el titulo, por lo que los creamos
-        titulo=new JLabel("Login");
+        titulo=new JLabel("Login", SwingConstants.CENTER);
         titulo.setFont(new Font("Raleway",Font.BOLD,60));
         subtitulo=new JLabel("Bienvenido al sistema de turnos");
         subtitulo.setFont(new Font("Raleway",Font.PLAIN,20));
@@ -153,9 +156,33 @@ public class PanelLogin extends JPanel implements ActionListener {
 
     }
     public void actionPerformed(ActionEvent e) {
-        String usuario=formulariousuario.getText();
-        String contraseña=formulariocontraseña.getText();
-        System.out.println("Usuario: "+usuario+" Contraseña: "+contraseña);
+        String txtUsuario=formulariousuario.getText();
+        String txtPassword=formulariocontraseña.getText();
+        System.out.println("Usuario: "+txtUsuario+" Contraseña: "+txtPassword);
+
+        UsuarioService userService = new UsuarioService();
+
+        Usuario usuario = new Usuario();
+        usuario = userService.recuperar(txtUsuario);
+        System.out.println(usuario);
+        if (usuario != null){
+            if (usuario.getPassword().equals(txtPassword)){
+                System.out.println("Acceso concedido");
+                mensaje.setForeground(Color.black);
+                mensaje.setText("Acceso concedido");
+                // Redirect to Menu Principal
+               panelManager.mostrarPantallaMenuPrincipal();
+            }else{
+                System.out.println("Acceso denegado");
+                mensaje.setForeground(Color.red);
+                mensaje.setText("Usuario y/o contraseña incorrectos");
+            }
+        }else{
+            System.out.println("Acceso denegado");
+            mensaje.setForeground(Color.red);
+            mensaje.setText("Usuario Inexistente");
+        }
+        /*
         if(usuario.equals("Pepe")&&contraseña.equals("contraseña")) {
             System.out.println("Acceso concedido");
             mensaje.setForeground(Color.black);
@@ -166,6 +193,7 @@ public class PanelLogin extends JPanel implements ActionListener {
             mensaje.setForeground(Color.red);
             mensaje.setText("Usuario y/o contraseña incorrectos");
         }
+        */
     }
 
 }
