@@ -1,8 +1,7 @@
 package com.app.dao;
 
 import com.app.negocio.Paciente;
-import com.app.negocio.Usuario;
-
+import java.util.ArrayList;
 
 public class PacienteDAO implements IPacienteDAO{
 
@@ -23,9 +22,9 @@ public class PacienteDAO implements IPacienteDAO{
         }
         else{
             for(Object objeto : lista){
-                Paciente us = (Paciente) objeto;
-                if(us.getId() == paciente.getId()){
-                    lista.remove(us);
+                Paciente pa = (Paciente) objeto;
+                if(pa.getId() == paciente.getId()){
+                    lista.remove(pa);
                     lista.add(paciente);
                 }
             }

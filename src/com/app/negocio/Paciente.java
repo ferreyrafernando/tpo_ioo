@@ -7,10 +7,18 @@ public class Paciente extends Persona {
     private String domicilio;
     private String dni;
     private Date fechaDeAlta;
-
+    private long id;
 
     public Paciente() {
         // Constructor
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDomicilio() {
