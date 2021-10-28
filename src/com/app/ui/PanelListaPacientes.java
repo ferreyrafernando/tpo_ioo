@@ -1,16 +1,19 @@
 package com.app.ui;
 
 import com.app.negocio.Odontologo;
+import com.app.negocio.Paciente;
 import com.app.service.OdontologoService;
+import com.app.service.PacienteService;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PanelListaOdontologo extends JPanel {
+public class PanelListaPacientes extends JPanel{
 
     private PanelManager panelManager;
 
@@ -27,9 +30,8 @@ public class PanelListaOdontologo extends JPanel {
 
     private JPanel panelBotonera;
 
-
-
-    public void armarPanelListaOdontologo(PanelManager panelManager){
+    public void armarPanelListaPacientes(PanelManager panelManager){
+        this.panelManager=panelManager;
         this.setLayout(new BorderLayout());
 
         //Creacion Botonera
@@ -44,6 +46,14 @@ public class PanelListaOdontologo extends JPanel {
         panelBotonera.add(btnEliminar);
         panelBotonera.add(btnCancelar);
 
+        //ActionListeners
+
+        btnCancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                panelManager.mostrarPantallaMenuPrincipal();
+            }
+        });
+
         //Listado - Grilla - Tabla de Odontologos
 
         contenidoTable = new DefaultTableModel();
@@ -54,38 +64,26 @@ public class PanelListaOdontologo extends JPanel {
         contenidoTable.addColumn("ID");
         contenidoTable.addColumn("Nombre");
         contenidoTable.addColumn("Apellido");
-        contenidoTable.addColumn("Matricula");
+        contenidoTable.addColumn("DNI");
+        contenidoTable.addColumn("Fecha de alta");
+        contenidoTable.addColumn("Domicilio");
 
-        OdontologoService service = new OdontologoService();
-        ArrayList<Odontologo> lista = service.listar();
+        /* Esto lo dejo comentado porque falta implementar
+        PacienteService service = new PacienteService();
+        ArrayList<Paciente> lista = service.listar();
 
-        for(Odontologo od:lista){
-            Object [] row = new Object[4];
-            row[0] = od.getId();
-            row[1] = od.getNombre();
-            row[2] = od.getApellido();
-            row[3] = od.getMatricula();
+        for(Paciente pa:lista){
+            Object [] row = new Object[6];
+            row[0] = pa.getId();
+            row[1] = pa.getNombre();
+            row[2] = pa.getApellido();
+            row[3] = pa.getDNI();
+            row[4] = pa.getFechaAlta();
+            row[5] = pa.getDomicilio();
             contenidoTable.addRow(row);
         }
-
+        */
         add(panelBotonera, BorderLayout.SOUTH);
         add(scrollPane, BorderLayout.CENTER);
-
-
-        //Action listeners
-
-        btnNuevo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelManager.mostrarFormularioOdontologo();
-            }
-        });
-
-        btnCancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelManager.mostrarPantallaMenuPrincipal();
-            }
-        });
     }
 }

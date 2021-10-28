@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PanelListaOdontologo extends JPanel {
+public class PanelListaTurnos extends JPanel {
 
     private PanelManager panelManager;
 
@@ -27,9 +27,8 @@ public class PanelListaOdontologo extends JPanel {
 
     private JPanel panelBotonera;
 
-
-
-    public void armarPanelListaOdontologo(PanelManager panelManager){
+    public void armarPanelListaTurnos(PanelManager panelManager){
+        this.panelManager=panelManager;
         this.setLayout(new BorderLayout());
 
         //Creacion Botonera
@@ -51,41 +50,34 @@ public class PanelListaOdontologo extends JPanel {
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(jtable);
 
-        contenidoTable.addColumn("ID");
-        contenidoTable.addColumn("Nombre");
-        contenidoTable.addColumn("Apellido");
-        contenidoTable.addColumn("Matricula");
+        contenidoTable.addColumn("Día");
+        contenidoTable.addColumn("Horario");
+        contenidoTable.addColumn("Odontólogo");
+        contenidoTable.addColumn("Paciente");
 
-        OdontologoService service = new OdontologoService();
-        ArrayList<Odontologo> lista = service.listar();
+/* Esto lo dejo comentado porque falta implementar
+        TurnoService service = new TurnoService();
+        ArrayList<Turno> lista = service.listar();
 
-        for(Odontologo od:lista){
+        for(Turno tu:lista){
             Object [] row = new Object[4];
-            row[0] = od.getId();
-            row[1] = od.getNombre();
-            row[2] = od.getApellido();
-            row[3] = od.getMatricula();
+            row[0] = tu.getDia();
+            row[1] = tu.getHorario();
+            row[2] = tu.getOdontologo();
+            row[3] = tu.getPaciente();
             contenidoTable.addRow(row);
         }
-
+ */
         add(panelBotonera, BorderLayout.SOUTH);
         add(scrollPane, BorderLayout.CENTER);
 
-
         //Action listeners
 
-        btnNuevo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelManager.mostrarFormularioOdontologo();
-            }
-        });
-
         btnCancelar.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 panelManager.mostrarPantallaMenuPrincipal();
             }
         });
+
     }
 }

@@ -9,6 +9,8 @@ import java.io.IOException;
 public class PanelManager {
 
     private PanelListaOdontologo panelListaOdontologo;
+    private PanelListaPacientes panelListaPacientes;
+    private PanelListaTurnos panelListaTurnos;
     private PanelFormularioOdontologo panelFormularioOdontologo;
     private PanelLogin PanelLogin;
     private PanelMenuPrincipal PanelMenuPrincipal;
@@ -22,6 +24,7 @@ public class PanelManager {
 
         jframe = new JFrame();
         jframe.setBounds(500,250,800,600);
+        jframe.setDefaultCloseOperation(jframe.EXIT_ON_CLOSE);
         try{
             BufferedImage icono= ImageIO.read(new File("./resources/iconexe.png"));
             jframe.setIconImage(icono);
@@ -42,6 +45,12 @@ public class PanelManager {
         panelListaOdontologo = new PanelListaOdontologo();
         panelListaOdontologo.armarPanelListaOdontologo(this);
 
+        panelListaPacientes=new PanelListaPacientes();
+        panelListaPacientes.armarPanelListaPacientes(this);
+
+        panelListaTurnos=new PanelListaTurnos();
+        panelListaTurnos.armarPanelListaTurnos(this);
+
     }
 
     public void mostrarFormularioOdontologo(){
@@ -54,6 +63,20 @@ public class PanelManager {
     public void mostrarListadoOdontologo(){
         jframe.getContentPane().removeAll();
         jframe.getContentPane().add(panelListaOdontologo);
+        jframe.getContentPane().validate();
+        jframe.getContentPane().repaint();
+    }
+
+    public void mostrarListadoTurnos(){
+        jframe.getContentPane().removeAll();
+        jframe.getContentPane().add(panelListaTurnos);
+        jframe.getContentPane().validate();
+        jframe.getContentPane().repaint();
+    }
+
+    public void mostrarListadoPacientes(){
+        jframe.getContentPane().removeAll();
+        jframe.getContentPane().add(panelListaPacientes);
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }

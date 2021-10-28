@@ -76,6 +76,7 @@ public class PanelMenuPrincipal extends JPanel {
         botonTurnos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón de Turnos");
+                panelManager.mostrarListadoTurnos();
             }
         });
 
@@ -101,6 +102,7 @@ public class PanelMenuPrincipal extends JPanel {
         botonPacientes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón de Pacientes");
+                panelManager.mostrarListadoPacientes();
             }
         });
         panelBotonPacientes.add(botonPacientes,BorderLayout.SOUTH);
@@ -125,6 +127,7 @@ public class PanelMenuPrincipal extends JPanel {
         botonOdontologos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón de Odontologos");
+                panelManager.mostrarListadoOdontologo();
             }
         });
 
@@ -157,6 +160,7 @@ public class PanelMenuPrincipal extends JPanel {
         botonSalir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón para salir");
+                panelManager.mostrarPantallaLogin();
             }
         });
 

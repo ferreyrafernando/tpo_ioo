@@ -7,6 +7,10 @@ public class PacienteDAO implements IPacienteDAO{
 
     @Override
     public void guardar(Paciente paciente) {
+        /* Lo dejo comentado porque el método listar que está puesto, al no estar implementado,
+        no deja ejecutar la GUI para testear, cuando esté implementado sacar el comentado
+
+
         ArchivoPaciente archivoP = new ArchivoPaciente("archivos/pacientes.txt");
         ArrayList lista = archivoP.listar();
         long max = 0;
@@ -31,6 +35,8 @@ public class PacienteDAO implements IPacienteDAO{
         }
 
         archivoP.guardar(lista);
+
+         */
     }
 
     @Override

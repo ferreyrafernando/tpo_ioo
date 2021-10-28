@@ -135,6 +135,7 @@ public class PanelLogin extends JPanel implements ActionListener {
         //Hacemos el espacio para el mensaje de error
         mensaje=new JLabel("");
         mensaje.setFont(new Font("Raleway",Font.PLAIN,12));
+        mensaje.setForeground(Color.red);
 
         //Un ultimo panel para mostrar el mensaje de error y el boton
         logeoYMensaje=new JPanel();
@@ -169,18 +170,17 @@ public class PanelLogin extends JPanel implements ActionListener {
         if (usuario != null){
             if (usuario.getPassword().equals(txtPassword)){
                 System.out.println("Acceso concedido");
-                mensaje.setForeground(Color.black);
-                mensaje.setText("Acceso concedido");
+                formulariocontraseña.setText("");
+                formulariousuario.setText("");
+                mensaje.setText("");
                 // Redirect to Menu Principal
                panelManager.mostrarPantallaMenuPrincipal();
             }else{
                 System.out.println("Acceso denegado");
-                mensaje.setForeground(Color.red);
                 mensaje.setText("Usuario y/o contraseña incorrectos");
             }
         }else{
             System.out.println("Acceso denegado");
-            mensaje.setForeground(Color.red);
             mensaje.setText("Usuario Inexistente");
         }
         /*
