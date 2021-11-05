@@ -1,5 +1,8 @@
 package com.app.ui;
 
+import com.app.negocio.Odontologo;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -53,16 +56,25 @@ public class PanelManager {
 
     }
 
-    public void mostrarFormularioOdontologo(){
+    public void mostrarFormularioOdontologo(Odontologo odontologo){
         jframe.getContentPane().removeAll();
         jframe.getContentPane().add(panelFormularioOdontologo);
+        if (odontologo != null){
+            panelFormularioOdontologo.cargarDatos(odontologo);
+        }else{
+            panelFormularioOdontologo.limpiarControles();
+        }
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }
 
-    public void mostrarListadoOdontologo(){
+    public void mostrarListadoOdontologo(Boolean refresh){
         jframe.getContentPane().removeAll();
+        if (refresh){
+            panelListaOdontologo.getListaOdontologos();
+        }
         jframe.getContentPane().add(panelListaOdontologo);
+
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }

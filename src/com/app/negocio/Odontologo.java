@@ -2,7 +2,7 @@ package com.app.negocio;
 
 import java.io.Serializable;
 
-public class Odontologo extends Persona implements Serializable {
+public class Odontologo extends Persona  {
 
     private int matricula;
     private long id;

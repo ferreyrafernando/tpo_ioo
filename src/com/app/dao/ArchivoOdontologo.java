@@ -15,7 +15,6 @@ public class ArchivoOdontologo {
 
     public void guardar(ArrayList coleccion)
     {
-
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

@@ -127,7 +127,7 @@ public class PanelMenuPrincipal extends JPanel {
         botonOdontologos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón de Odontologos");
-                panelManager.mostrarListadoOdontologo();
+                panelManager.mostrarListadoOdontologo(false);
             }
         });
 
@@ -160,7 +160,8 @@ public class PanelMenuPrincipal extends JPanel {
         botonSalir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón para salir");
-                panelManager.mostrarPantallaLogin();
+                System.exit(0);
+                //panelManager.mostrarPantallaLogin();
             }
         });
 

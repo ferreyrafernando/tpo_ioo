@@ -1,14 +1,12 @@
 package com.app.negocio;
 
-public class Persona {
+import java.io.Serializable;
+
+public class Persona implements Serializable {
 
     private String apellido;
     private String nombre;
     private Usuario usuario;
-
-    public Persona() {
-        //Constructor
-    }
 
     public String getApellido() {
         return apellido;

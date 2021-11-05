@@ -1,4 +1,5 @@
 import com.app.negocio.Odontologo;
+import com.app.negocio.Persona;
 import com.app.service.OdontologoService;
 import com.app.negocio.Usuario;
 import com.app.service.UsuarioService;
@@ -20,6 +21,45 @@ public class Main {
         System.out.println("DAO");
 
         UsuarioService service = new UsuarioService();
+/*
+        OdontologoService serviceod = new OdontologoService();
+
+        Odontologo usuario = new Odontologo();
+        usuario.setId(0);
+        usuario.setMatricula(1234);
+        usuario.setNombre("Cristian");
+        usuario.setApellido("Martinez");
+
+        serviceod.guardar(usuario);
+
+        Odontologo usuario2 = new Odontologo();
+        Persona pers2 = new Persona();
+
+        usuario2.setId(0);
+        usuario2.setMatricula(4321);
+        usuario2.setNombre("Patricia");
+        usuario2.setApellido("Agranatti");
+
+
+        serviceod.guardar(usuario2);
+
+        Odontologo usuario3 = new Odontologo();
+        usuario3.setId(0);
+        usuario3.setMatricula(4561);
+        usuario3.setNombre("Silvio");
+        usuario3.setApellido("Lovera");
+
+        serviceod.guardar(usuario3);
+
+        Odontologo usuario4 = new Odontologo();
+        usuario4.setId(0);
+        usuario4.setMatricula(7894);
+        usuario4.setNombre("Romina");
+        usuario4.setApellido("Aromando");
+
+        serviceod.guardar(usuario4);
+*/
+
 /*
         Usuario usuario = new Usuario();
         usuario.setId(0);

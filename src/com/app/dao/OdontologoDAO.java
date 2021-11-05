@@ -3,6 +3,8 @@ package com.app.dao;
 import com.app.negocio.Odontologo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 public class OdontologoDAO implements IOdontologoDAO{
 
@@ -22,13 +24,16 @@ public class OdontologoDAO implements IOdontologoDAO{
             lista.add(odontologo);
         }
         else{
-            for(Object objeto : lista){
-                Odontologo od = (Odontologo) objeto;
-                if(od.getId() == odontologo.getId()){
-                    lista.remove(od);
-                    lista.add(odontologo);
+
+
+            ListIterator<Odontologo> iter = lista.listIterator();
+            while(iter.hasNext()){
+                if(iter.next().getId() == odontologo.getId()){
+                    iter.remove();
                 }
             }
+            lista.add(odontologo);
+
         }
 
         archivo.guardar(lista);
