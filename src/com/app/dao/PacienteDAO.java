@@ -1,5 +1,6 @@
 package com.app.dao;
 
+import com.app.negocio.Odontologo;
 import com.app.negocio.Paciente;
 import java.util.ArrayList;
 
@@ -7,10 +8,6 @@ public class PacienteDAO implements IPacienteDAO{
 
     @Override
     public void guardar(Paciente paciente) {
-        /* Lo dejo comentado porque el método listar que está puesto, al no estar implementado,
-        no deja ejecutar la GUI para testear, cuando esté implementado sacar el comentado
-
-
         ArchivoPaciente archivoP = new ArchivoPaciente("archivos/pacientes.txt");
         ArrayList lista = archivoP.listar();
         long max = 0;
@@ -40,12 +37,44 @@ public class PacienteDAO implements IPacienteDAO{
     }
 
     @Override
-    public void eliminar(int id) {
+    public ArrayList<Paciente> listar() {
+        ArchivoPaciente archivo = new ArchivoPaciente ( "archivos/pacientes.txt");
+        ArrayList lista = archivo.listar();
+        ArrayList<Paciente> pacientes = new ArrayList<>();
 
+        for(Object obj: lista)
+            pacientes.add((Paciente) obj);
+
+        return pacientes;
+    }
+
+    @Override
+    public void eliminar(int id) {
+        ArchivoPaciente archivo = new ArchivoPaciente("archivos/pacientes.txt");
+        ArrayList lista = archivo.listar();
+
+        int index = 0;
+        int i = 0;
+        for(Object objeto:lista)
+        {
+            if(((Paciente)objeto).getId() == id)
+                index = i;
+            i++;
+        }
+        lista.remove(index);
+        archivo.guardar(lista);
     }
 
     @Override
     public void recuperar(int id) {
+        ArrayList<Paciente> pacientes = this.listar();
+        Paciente resultado = null;
 
+        for(Pacientes pa: pacientes) {
+            if (pa.getId() == id)
+                resultado = pa;
+        }
+
+        return resultado;
     }
 }

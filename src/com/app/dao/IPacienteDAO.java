@@ -10,6 +10,8 @@ public interface IPacienteDAO {
 
     public void recuperar(int id);
 
+    public ArrayList<Paciente> listar ();
+
 
 
 }
