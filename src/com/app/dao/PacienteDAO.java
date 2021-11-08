@@ -32,8 +32,6 @@ public class PacienteDAO implements IPacienteDAO{
         }
 
         archivoP.guardar(lista);
-
-         */
     }
 
     @Override
