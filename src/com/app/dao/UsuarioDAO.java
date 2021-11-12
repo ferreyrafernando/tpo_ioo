@@ -1,8 +1,10 @@
 package com.app.dao;
 
+import com.app.negocio.Paciente;
 import com.app.negocio.Usuario;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class UsuarioDAO implements IUsuarioDAO{
 
@@ -22,20 +24,20 @@ public class UsuarioDAO implements IUsuarioDAO{
             lista.add(usuario);
         }
         else{
-            for(Object objeto : lista){
-                Usuario us = (Usuario) objeto;
-                if(us.getId() == usuario.getId()){
-                    lista.remove(us);
-                    lista.add(usuario);
+            ListIterator<Usuario> iter = lista.listIterator();
+            while(iter.hasNext()){
+                if(iter.next().getId() == usuario.getId()){
+                    iter.remove();
                 }
             }
+            lista.add(usuario);
         }
 
         archivo.guardar(lista);
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(String userName) {
         ArchivoUsuario archivo = new ArchivoUsuario("archivos/usuarios.txt");
         ArrayList lista = archivo.listar();
 
@@ -43,7 +45,8 @@ public class UsuarioDAO implements IUsuarioDAO{
         int i = 0;
         for(Object objeto:lista)
         {
-            if(((Usuario)objeto).getId() == id)
+
+            if(((Usuario)objeto).getUsuario().equals(userName))
                 index = i;
             i++;
         }

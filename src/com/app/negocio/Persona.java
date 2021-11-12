@@ -31,4 +31,5 @@ public class Persona implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
 }

@@ -1,15 +1,15 @@
 package com.app.dao;
 
-import com.app.negocio.Paciente;
+import com.app.negocio.Turno;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class ArchivoPaciente {
+public class ArchivoTurno {
 
     private String path;
 
-    public ArchivoPaciente(String path){
+    public ArchivoTurno(String path){
         this.path = path;
     }
 
@@ -29,7 +29,7 @@ public class ArchivoPaciente {
         }
     }
 
-    public ArrayList<Paciente> listar()
+    public ArrayList<Turno> listar()
     {
         ArrayList lista = null;
         try {
@@ -52,5 +52,4 @@ public class ArchivoPaciente {
         }
         return lista;
     }
-
 }

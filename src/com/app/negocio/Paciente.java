@@ -45,8 +45,4 @@ public class Paciente extends Persona {
         this.fechaDeAlta = fechaDeAlta;
     }
 
-    public int guardarRegistro(Paciente paciente){
-
-        return 1;
-    }
 }

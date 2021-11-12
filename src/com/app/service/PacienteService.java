@@ -4,6 +4,8 @@ import com.app.dao.IPacienteDAO;
 import com.app.dao.PacienteDAO;
 import com.app.negocio.Paciente;
 
+import java.util.ArrayList;
+
 public class PacienteService {
 
     private IPacienteDAO pacienteDAO;
@@ -11,6 +13,7 @@ public class PacienteService {
     public PacienteService() {
         pacienteDAO = new PacienteDAO();
     }
+
     public void guardar(Paciente paciente){
         pacienteDAO.guardar(paciente);
     }
@@ -22,6 +25,10 @@ public class PacienteService {
     }
     public Paciente recuperar(long id){
         return pacienteDAO.recuperar(id);
+    }
+
+    public Paciente recuperarByUserName(String userName){
+        return pacienteDAO.recuperarByUserName(userName);
     }
 
 

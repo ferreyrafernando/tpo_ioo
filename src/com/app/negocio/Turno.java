@@ -3,14 +3,23 @@ package com.app.negocio;
 import java.util.Date;
 
 public class Turno {
+    private Long id;
     private Date fecha;
     private Date hora;
     private Paciente paciente;
     private Odontologo odontologo;
-    private String estadoTurno; //L - Libre, R - Reservado, T - Tomado
+    private String estadoTurno; //L - Libre, R - Reservado
 
     public Turno() {
         //Constructor
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Date getFecha() {

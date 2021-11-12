@@ -15,6 +15,7 @@ import javax.swing.*;
 
 public class PanelLogin extends JPanel implements ActionListener {
 
+    private LoginManager loginManager;
     private PanelManager panelManager;
     private JPanel principal;
     private JPanel iconoTitulo;
@@ -34,9 +35,9 @@ public class PanelLogin extends JPanel implements ActionListener {
     private JPanel logeoYMensaje;
     private JLabel mensaje;
 
-    public void armarPanelLogin(PanelManager panelManager){
+    public void armarPanelLogin(LoginManager loginManager){
         //Seteamos el panel manager y el layout
-        this.panelManager=panelManager;
+        this.loginManager=loginManager;
         setLayout(new BorderLayout());
 
         //Armamos la pantalla principal
@@ -170,11 +171,16 @@ public class PanelLogin extends JPanel implements ActionListener {
         if (usuario != null){
             if (usuario.getPassword().equals(txtPassword)){
                 System.out.println("Acceso concedido");
+                System.out.println("Rol Usuario: "+usuario.getRol());
+                System.out.println("Usuario Id: "+usuario.getId());
                 formulariocontraseña.setText("");
                 formulariousuario.setText("");
                 mensaje.setText("");
                 // Redirect to Menu Principal
-               panelManager.mostrarPantallaMenuPrincipal();
+
+                loginManager.mostrarPantallaMenuPrincipal(usuario);
+
+
             }else{
                 System.out.println("Acceso denegado");
                 mensaje.setText("Usuario y/o contraseña incorrectos");

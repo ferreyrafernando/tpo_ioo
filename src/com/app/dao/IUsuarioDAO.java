@@ -8,6 +8,6 @@ public interface IUsuarioDAO {
 
     public void guardar(Usuario usuario);
     public Usuario recuperar(String userName);
-    public void eliminar(Long id);
+    public void eliminar(String userName);
     public ArrayList<Usuario> listar();
 }

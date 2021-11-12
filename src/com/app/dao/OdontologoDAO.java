@@ -3,7 +3,6 @@ package com.app.dao;
 import com.app.negocio.Odontologo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.ListIterator;
 
 public class OdontologoDAO implements IOdontologoDAO{
@@ -24,8 +23,6 @@ public class OdontologoDAO implements IOdontologoDAO{
             lista.add(odontologo);
         }
         else{
-
-
             ListIterator<Odontologo> iter = lista.listIterator();
             while(iter.hasNext()){
                 if(iter.next().getId() == odontologo.getId()){
@@ -33,7 +30,6 @@ public class OdontologoDAO implements IOdontologoDAO{
                 }
             }
             lista.add(odontologo);
-
         }
 
         archivo.guardar(lista);

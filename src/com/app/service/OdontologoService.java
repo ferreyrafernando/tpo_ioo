@@ -30,4 +30,6 @@ public class OdontologoService {
         return odontologoDAO.listar();
     }
 
+
+
 }

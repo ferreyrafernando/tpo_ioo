@@ -1,6 +1,8 @@
 package com.app.ui;
 
 import com.app.negocio.Odontologo;
+import com.app.negocio.Paciente;
+import com.app.negocio.Usuario;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.imageio.ImageIO;
@@ -14,16 +16,28 @@ public class PanelManager {
     private PanelListaOdontologo panelListaOdontologo;
     private PanelListaPacientes panelListaPacientes;
     private PanelListaTurnos panelListaTurnos;
+    private PanelPedidoTurno panelPedidoTurno;
     private PanelFormularioOdontologo panelFormularioOdontologo;
-    private PanelLogin PanelLogin;
-    private PanelMenuPrincipal PanelMenuPrincipal;
+    private PanelFormularioPaciente panelFormularioPaciente;
+
+    private PanelMenuPrincipal panelMenuPrincipal;
     private JFrame jframe;
+
+    private Usuario userLogged;
 
     public void showFrame(){
         jframe.setVisible(true);
     }
 
-    public void armarManager(){
+    public Usuario getUserLogged() {
+        return userLogged;
+    }
+
+    public void setUserLogged(Usuario user) {
+        this.userLogged = user;
+    }
+
+    public void armarManager(Character usarioRol){
 
         jframe = new JFrame();
         jframe.setBounds(500,250,800,600);
@@ -36,23 +50,29 @@ public class PanelManager {
             e.printStackTrace();
         }
 
-        panelFormularioOdontologo = new PanelFormularioOdontologo();
-        panelFormularioOdontologo.armarPanelFormularioOdontologo(this);
 
-        PanelLogin=new PanelLogin();
-        PanelLogin.armarPanelLogin(this);
+        panelMenuPrincipal=new PanelMenuPrincipal();
+        panelMenuPrincipal.armarPanelMenuPrincipal(this, usarioRol);
 
-        PanelMenuPrincipal=new PanelMenuPrincipal();
-        PanelMenuPrincipal.armarPanelMenuPrincipal(this);
+        if (usarioRol == 'P'){ // Si el usuario es de tipo Paciente, solo le armo el panel del menu principal y el de pedido de turno
+            panelPedidoTurno=new PanelPedidoTurno();
+            panelPedidoTurno.armarPanelPedidoTurno(this, this.getUserLogged());
+        }else{
+            panelListaTurnos=new PanelListaTurnos();
+            panelListaTurnos.armarPanelListaTurnos(this);
 
-        panelListaOdontologo = new PanelListaOdontologo();
-        panelListaOdontologo.armarPanelListaOdontologo(this);
+            panelListaPacientes=new PanelListaPacientes();
+            panelListaPacientes.armarPanelListaPacientes(this);
 
-        panelListaPacientes=new PanelListaPacientes();
-        panelListaPacientes.armarPanelListaPacientes(this);
+            panelFormularioPaciente = new PanelFormularioPaciente();
+            panelFormularioPaciente.armarPanelFormularioPaciente(this);
 
-        panelListaTurnos=new PanelListaTurnos();
-        panelListaTurnos.armarPanelListaTurnos(this);
+            panelListaOdontologo = new PanelListaOdontologo();
+            panelListaOdontologo.armarPanelListaOdontologo(this);
+
+            panelFormularioOdontologo = new PanelFormularioOdontologo();
+            panelFormularioOdontologo.armarPanelFormularioOdontologo(this);
+        }
 
     }
 
@@ -86,23 +106,48 @@ public class PanelManager {
         jframe.getContentPane().repaint();
     }
 
-    public void mostrarListadoPacientes(){
+    public void mostrarPedidoTurno(){
         jframe.getContentPane().removeAll();
-        jframe.getContentPane().add(panelListaPacientes);
+        jframe.getContentPane().add(panelPedidoTurno);
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }
 
+    public void  mostrarFormularioPaciente(Paciente paciente){
+        jframe.getContentPane().removeAll();
+        jframe.getContentPane().add(panelFormularioPaciente);
+        if (paciente != null){
+            panelFormularioPaciente.cargarDatos(paciente);
+        }else{
+            panelFormularioPaciente.limpiarControles();
+        }
+        jframe.getContentPane().validate();
+        jframe.getContentPane().repaint();
+    }
+
+    public void mostrarListadoPacientes(Boolean refresh){
+        jframe.getContentPane().removeAll();
+        if (refresh){
+            panelListaPacientes.getListaPacientes();
+        }
+        jframe.getContentPane().add(panelListaPacientes);
+
+        jframe.getContentPane().validate();
+        jframe.getContentPane().repaint();
+    }
+/*
     public void mostrarPantallaLogin(){
         jframe.getContentPane().removeAll();
-        jframe.getContentPane().add(PanelLogin);
+        jframe.getContentPane().add(panelLogin);
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }
 
+
+ */
     public void mostrarPantallaMenuPrincipal(){
         jframe.getContentPane().removeAll();
-        jframe.getContentPane().add(PanelMenuPrincipal);
+        jframe.getContentPane().add(panelMenuPrincipal);
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }

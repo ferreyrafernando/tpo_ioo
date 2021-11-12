@@ -23,8 +23,8 @@ public class UsuarioService {
         return usuarioDAO.recuperar(userName);
     }
 
-    public void eliminar(long id){
-        usuarioDAO.eliminar(id);
+    public void eliminar(String userName){
+        usuarioDAO.eliminar(userName);
     }
 
     public ArrayList<Usuario> listar() {

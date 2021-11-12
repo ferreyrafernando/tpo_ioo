@@ -1,8 +1,9 @@
 package com.app.dao;
 
-import com.app.negocio.Odontologo;
 import com.app.negocio.Paciente;
+
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class PacienteDAO implements IPacienteDAO{
 
@@ -22,13 +23,13 @@ public class PacienteDAO implements IPacienteDAO{
             lista.add(paciente);
         }
         else{
-            for(Object objeto : lista){
-                Paciente pa = (Paciente) objeto;
-                if(pa.getId() == paciente.getId()){
-                    lista.remove(pa);
-                    lista.add(paciente);
+            ListIterator<Paciente> iter = lista.listIterator();
+            while(iter.hasNext()){
+                if(iter.next().getId() == paciente.getId()){
+                    iter.remove();
                 }
             }
+            lista.add(paciente);
         }
 
         archivoP.guardar(lista);
@@ -47,7 +48,7 @@ public class PacienteDAO implements IPacienteDAO{
     }
 
     @Override
-    public void eliminar(int id) {
+    public void eliminar(Long id) {
         ArchivoPaciente archivo = new ArchivoPaciente("archivos/pacientes.txt");
         ArrayList lista = archivo.listar();
 
@@ -64,15 +65,32 @@ public class PacienteDAO implements IPacienteDAO{
     }
 
     @Override
-    public void recuperar(int id) {
+    public Paciente recuperar(Long id) {
         ArrayList<Paciente> pacientes = this.listar();
         Paciente resultado = null;
 
-        for(Pacientes pa: pacientes) {
+        for(Paciente pa: pacientes) {
             if (pa.getId() == id)
                 resultado = pa;
         }
 
         return resultado;
     }
+
+    @Override
+    public Paciente recuperarByUserName(String userName) {
+        ArrayList<Paciente> pacientes = this.listar();
+        Paciente resultado = null;
+
+        for(Paciente pa: pacientes) {
+            System.out.println(pa.getUsuario().getId());
+            if (pa.getUsuario().getUsuario().equals(userName))
+                resultado = pa;
+
+        }
+
+        return resultado;
+    }
+
+
 }

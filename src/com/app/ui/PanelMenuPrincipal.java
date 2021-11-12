@@ -32,8 +32,14 @@ public class PanelMenuPrincipal extends JPanel {
     private JButton botonOdontologos;
     private JPanel panelBotonSalir;
     private JButton botonSalir;
+    private Boolean userEsPaciente;
 
-    public void armarPanelMenuPrincipal(PanelManager panelManager){
+
+    public void vistaPaciente(Boolean vistaPaciente){
+        this.userEsPaciente = vistaPaciente;
+    }
+
+    public void armarPanelMenuPrincipal(PanelManager panelManager, Character usarioRol){
 
         //Primero seteamos el manager y layout
         this.panelManager=panelManager;
@@ -76,7 +82,12 @@ public class PanelMenuPrincipal extends JPanel {
         botonTurnos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón de Turnos");
-                panelManager.mostrarListadoTurnos();
+                if (usarioRol != 'P'){
+                    panelManager.mostrarListadoTurnos();
+                }else {
+                    panelManager.mostrarPedidoTurno();
+                }
+
             }
         });
 
@@ -90,62 +101,66 @@ public class PanelMenuPrincipal extends JPanel {
             e.printStackTrace();
         }
         panelBotonTurnos.add(botonTurnos,BorderLayout.SOUTH);
-
-        //Ahora repetimos para el de pacientes
-        panelBotonPacientes=new JPanel();
-        panelBotonPacientes.setLayout(new BorderLayout());
-
-        botonPacientes=new JButton("Pacientes");
-        botonPacientes.setBackground(colorBotones);
-        botonPacientes.setFont(fontBotones);
-        botonPacientes.setOpaque(true);
-        botonPacientes.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Se apretó el botón de Pacientes");
-                panelManager.mostrarListadoPacientes();
-            }
-        });
-        panelBotonPacientes.add(botonPacientes,BorderLayout.SOUTH);
-
-        try{
-            BufferedImage imagenPacientes= ImageIO.read(new File("./resources/pacientes.png"));
-            JLabel iconoPacientes=new JLabel(new ImageIcon(imagenPacientes));
-            panelBotonPacientes.add(iconoPacientes,BorderLayout.NORTH);
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-
-        //Finalmente agregamos el de odontologos
-        panelBotonOdontologos=new JPanel();
-        panelBotonOdontologos.setLayout(new BorderLayout());
-
-        botonOdontologos=new JButton("Odontologos");
-        botonOdontologos.setBackground(colorBotones);
-        botonOdontologos.setFont(fontBotones);
-        botonOdontologos.setOpaque(true);
-        botonOdontologos.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Se apretó el botón de Odontologos");
-                panelManager.mostrarListadoOdontologo(false);
-            }
-        });
-
-        panelBotonOdontologos.add(botonOdontologos,BorderLayout.SOUTH);
-
-        try{
-            BufferedImage imagenOdontologos= ImageIO.read(new File("./resources/odontologos.png"));
-            JLabel iconoOdontologos=new JLabel(new ImageIcon(imagenOdontologos));
-            panelBotonOdontologos.add(iconoOdontologos,BorderLayout.NORTH);
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-
-        //Finalmente, agregamos los 3 paneles y este al principal
         panelBotones.add(panelBotonTurnos,c);
-        panelBotones.add(panelBotonPacientes,c);
-        panelBotones.add(panelBotonOdontologos,c);
+
+        if (usarioRol != 'P'){
+
+            //Ahora repetimos para el de pacientes
+            panelBotonPacientes=new JPanel();
+            panelBotonPacientes.setLayout(new BorderLayout());
+
+            botonPacientes=new JButton("Pacientes");
+            botonPacientes.setBackground(colorBotones);
+            botonPacientes.setFont(fontBotones);
+            botonPacientes.setOpaque(true);
+            botonPacientes.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Se apretó el botón de Pacientes");
+                    panelManager.mostrarListadoPacientes(false);
+                }
+            });
+            panelBotonPacientes.add(botonPacientes,BorderLayout.SOUTH);
+
+            try{
+                BufferedImage imagenPacientes= ImageIO.read(new File("./resources/pacientes.png"));
+                JLabel iconoPacientes=new JLabel(new ImageIcon(imagenPacientes));
+                panelBotonPacientes.add(iconoPacientes,BorderLayout.NORTH);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+
+            //Finalmente agregamos el de odontologos
+            panelBotonOdontologos=new JPanel();
+            panelBotonOdontologos.setLayout(new BorderLayout());
+
+            botonOdontologos=new JButton("Odontologos");
+            botonOdontologos.setBackground(colorBotones);
+            botonOdontologos.setFont(fontBotones);
+            botonOdontologos.setOpaque(true);
+            botonOdontologos.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Se apretó el botón de Odontologos");
+                    panelManager.mostrarListadoOdontologo(false);
+                }
+            });
+
+            panelBotonOdontologos.add(botonOdontologos,BorderLayout.SOUTH);
+
+            try{
+                BufferedImage imagenOdontologos= ImageIO.read(new File("./resources/odontologos.png"));
+                JLabel iconoOdontologos=new JLabel(new ImageIcon(imagenOdontologos));
+                panelBotonOdontologos.add(iconoOdontologos,BorderLayout.NORTH);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+
+            //Finalmente, agregamos los 3 paneles y este al principal
+
+            panelBotones.add(panelBotonPacientes,c);
+            panelBotones.add(panelBotonOdontologos,c);
+        }
         add(panelBotones,BorderLayout.CENTER);
 
         //Por ultimo, armamos el boton de Salir para cerrar sesión y volver al menú
