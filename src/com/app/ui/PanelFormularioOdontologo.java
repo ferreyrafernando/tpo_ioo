@@ -34,23 +34,55 @@ public class PanelFormularioOdontologo extends JPanel {
         this.panelManager = panelManager;
         setLayout(new BorderLayout());
 
-        lblID = new JLabel("ID:");
-        lblNombre = new JLabel("Nombre:");
-        lblApellido = new JLabel("Apellido:");
-        lblMatricula = new JLabel("Matricula:");
+        lblID = new JLabel("ID:",SwingConstants.CENTER);
+        lblNombre = new JLabel("Nombre:",SwingConstants.CENTER);
+        lblApellido = new JLabel("Apellido:",SwingConstants.CENTER);
+        lblMatricula = new JLabel("Matricula:",SwingConstants.CENTER);
         txtID = new JTextField("", 3);
         txtNombre = new JTextField("", 10);
         txtApellido = new JTextField("", 10);
         txtMatricula =new JTextField("", 5);
+        Font a=new Font("Raleway",Font.PLAIN,18);
+
+
+
+
+        JLabel titulo=new JLabel("Ingrese los datos",SwingConstants.CENTER);
+
+        titulo.setFont(new Font("Raleway",Font.BOLD,26));
+
+
+        lblID.setFont(a);
+        lblNombre.setFont(a);
+        lblApellido.setFont(a);
+        lblMatricula.setFont(a);
+
         panelComponentes = new JPanel();
-        panelComponentes.add(lblID);
-        panelComponentes.add(txtID);
-        panelComponentes.add(lblNombre);
-        panelComponentes.add(txtNombre);
-        panelComponentes.add(lblApellido);
-        panelComponentes.add(txtApellido);
-        panelComponentes.add(lblMatricula);
-        panelComponentes.add(txtMatricula);
+        panelComponentes.setLayout(new GridBagLayout());
+
+        GridBagConstraints textos=new GridBagConstraints();
+        GridBagConstraints formularios=new GridBagConstraints();
+        formularios.fill = GridBagConstraints.HORIZONTAL;
+        formularios.ipady = 40;
+        formularios.weightx = 2;
+        formularios.gridx=1;
+        formularios.gridwidth = 3;
+        formularios.gridheight=2;
+        textos.fill = GridBagConstraints.HORIZONTAL;
+        textos.weightx = 0.5;
+        textos.gridx=0;
+        textos.gridheight=2;
+        textos.gridwidth=1;
+
+        panelComponentes.add(lblID,textos);
+        panelComponentes.add(txtID,formularios);
+        panelComponentes.add(lblNombre,textos);
+        panelComponentes.add(txtNombre,formularios);
+        panelComponentes.add(lblApellido,textos);
+        panelComponentes.add(txtApellido,formularios);
+        panelComponentes.add(lblMatricula,textos);
+        panelComponentes.add(txtMatricula,formularios);
+
 
         btnGuardar = new JButton("Guardar");
         btnCancelar = new JButton("Cancelar");
@@ -60,7 +92,7 @@ public class PanelFormularioOdontologo extends JPanel {
 
         add(panelComponentes, BorderLayout.CENTER);
         add(panelBotonera, BorderLayout.SOUTH);
-
+        add(titulo,BorderLayout.NORTH);
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
