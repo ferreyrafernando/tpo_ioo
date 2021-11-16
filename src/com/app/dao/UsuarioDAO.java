@@ -1,6 +1,6 @@
 package com.app.dao;
 
-import com.app.negocio.Paciente;
+
 import com.app.negocio.Usuario;
 
 import java.util.ArrayList;
@@ -70,9 +70,9 @@ public class UsuarioDAO implements IUsuarioDAO{
     public Usuario recuperar(String userName) {
         ArrayList<Usuario> usuarios = this.listar();
         Usuario resultado = null;
-
+        System.out.println(userName);
         for(Usuario us : usuarios) {
-
+            System.out.println(us.getUsuario());
             if (us.getUsuario().equals(userName))
                 resultado = us;
         }

@@ -138,7 +138,7 @@ public class PanelFormularioPaciente extends JPanel {
 
                 usuario.setUsuario(txtUsuario.getText());
                 usuario.setPassword(txtClave.getText());
-                usuario.setRol('P');
+                usuario.setRol("P");
                 paciente.setUsuario(usuario);
 
                 pacienteService.guardar(paciente);

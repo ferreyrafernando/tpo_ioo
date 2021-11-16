@@ -3,7 +3,6 @@ package com.app.ui;
 
 import com.app.negocio.Paciente;
 import com.app.negocio.Usuario;
-import com.app.service.OdontologoService;
 import com.app.service.PacienteService;
 import com.app.service.UsuarioService;
 

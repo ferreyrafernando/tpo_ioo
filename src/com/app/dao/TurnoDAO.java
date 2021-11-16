@@ -61,4 +61,19 @@ public class TurnoDAO implements ITurnoDAO{
         return resultado;
     }
 
+    @Override
+    public ArrayList<Turno> recuperarTurnoLibreByOdontologo(Long idOdontologo) {
+        ArrayList<Turno> turnos = this.listar();
+        ArrayList<Turno> libres = new ArrayList<Turno>();
+
+        for(Turno tu: turnos) {
+            if (tu.getEstadoTurno().equals("L") && tu.getOdontologo().getId() == idOdontologo){
+                libres.add(tu);
+            }
+
+        }
+
+        return libres;
+    }
+
 }

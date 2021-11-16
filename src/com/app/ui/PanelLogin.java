@@ -1,5 +1,7 @@
 package com.app.ui;
 
+
+
 import com.app.negocio.Usuario;
 import com.app.service.UsuarioService;
 
@@ -16,7 +18,7 @@ import javax.swing.*;
 public class PanelLogin extends JPanel implements ActionListener {
 
     private LoginManager loginManager;
-    private PanelManager panelManager;
+    //private PanelManager panelManager;
     private JPanel principal;
     private JPanel iconoTitulo;
     private JPanel subFormulario;
@@ -27,11 +29,11 @@ public class PanelLogin extends JPanel implements ActionListener {
     private JPanel panelsur;
     private JPanel usuario;
     private JLabel usrtxt;
-    private JPanel contraseña;
+    private JPanel passw;
     private JLabel contratxt;
     private JButton logeo;
     private JTextField formulariousuario;
-    private JPasswordField formulariocontraseña;
+    private JPasswordField formulariocontrasena;
     private JPanel logeoYMensaje;
     private JLabel mensaje;
 
@@ -106,26 +108,26 @@ public class PanelLogin extends JPanel implements ActionListener {
         usuario.add(formulariousuario,BorderLayout.CENTER);
 
         //ahora vamos con el de la contraseña
-        contraseña=new JPanel();
-        contraseña.setLayout(new BorderLayout());
+        passw=new JPanel();
+        passw.setLayout(new BorderLayout());
 
         contratxt=new JLabel("Contraseña");
         contratxt.setFont(new Font("Raleway",Font.PLAIN,20));
-        contraseña.add(contratxt,BorderLayout.NORTH);
+        passw.add(contratxt,BorderLayout.NORTH);
 
         try {
             BufferedImage imagencontra=ImageIO.read(new File("./resources/iconopass.jpg"));
             JLabel iconocontra=new JLabel(new ImageIcon(imagencontra));
-            contraseña.add(iconocontra,BorderLayout.WEST);
+            passw.add(iconocontra,BorderLayout.WEST);
         }
         catch(IOException e){
             e.printStackTrace();
         }
 
-        formulariocontraseña=new JPasswordField();
-        formulariocontraseña.addActionListener(this);
+        formulariocontrasena=new JPasswordField();
+        formulariocontrasena.addActionListener(this);
 
-        contraseña.add(formulariocontraseña,BorderLayout.CENTER);
+        passw.add(formulariocontrasena,BorderLayout.CENTER);
 
         //Armamos el boton para logear
         logeo=new JButton("Login");
@@ -147,7 +149,7 @@ public class PanelLogin extends JPanel implements ActionListener {
 
         //Finalmente añadimos todos al panel sur y el sur al principal
         panelsur.add(usuario,BorderLayout.NORTH);
-        panelsur.add(contraseña,BorderLayout.CENTER);
+        panelsur.add(passw,BorderLayout.CENTER);
         panelsur.add(logeoYMensaje,BorderLayout.SOUTH);
 
 
@@ -160,25 +162,25 @@ public class PanelLogin extends JPanel implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         String txtUsuario=formulariousuario.getText();
-        String txtPassword=formulariocontraseña.getText();
+        String txtPassword=formulariocontrasena.getText();
         System.out.println("Usuario: "+txtUsuario+" Contraseña: "+txtPassword);
 
         UsuarioService userService = new UsuarioService();
 
-        Usuario usuario = new Usuario();
-        usuario = userService.recuperar(txtUsuario);
-        System.out.println(usuario);
-        if (usuario != null){
-            if (usuario.getPassword().equals(txtPassword)){
+        Usuario userFound = new Usuario();
+        userFound = userService.recuperar(txtUsuario);
+        System.out.println(userFound);
+        if (userFound != null){
+            if (userFound.getPassword().equals(txtPassword)){
                 System.out.println("Acceso concedido");
-                System.out.println("Rol Usuario: "+usuario.getRol());
-                System.out.println("Usuario Id: "+usuario.getId());
-                formulariocontraseña.setText("");
+                System.out.println("Usuario Id: "+userFound.getId());
+                System.out.println("Rol Usuario: "+ userFound.getRol());
+                formulariocontrasena.setText("");
                 formulariousuario.setText("");
                 mensaje.setText("");
                 // Redirect to Menu Principal
 
-                loginManager.mostrarPantallaMenuPrincipal(usuario);
+                loginManager.mostrarPantallaMenuPrincipal(userFound);
 
 
             }else{
@@ -189,18 +191,7 @@ public class PanelLogin extends JPanel implements ActionListener {
             System.out.println("Acceso denegado");
             mensaje.setText("Usuario Inexistente");
         }
-        /*
-        if(usuario.equals("Pepe")&&contraseña.equals("contraseña")) {
-            System.out.println("Acceso concedido");
-            mensaje.setForeground(Color.black);
-            mensaje.setText("Acceso concedido");
-        }
-        else {
-            System.out.println("Acceso denegado");
-            mensaje.setForeground(Color.red);
-            mensaje.setText("Usuario y/o contraseña incorrectos");
-        }
-        */
+
     }
 
 }

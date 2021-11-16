@@ -39,7 +39,7 @@ public class PanelMenuPrincipal extends JPanel {
         this.userEsPaciente = vistaPaciente;
     }
 
-    public void armarPanelMenuPrincipal(PanelManager panelManager, Character usarioRol){
+    public void armarPanelMenuPrincipal(PanelManager panelManager, String usarioRol){
 
         //Primero seteamos el manager y layout
         this.panelManager=panelManager;
@@ -82,7 +82,7 @@ public class PanelMenuPrincipal extends JPanel {
         botonTurnos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón de Turnos");
-                if (usarioRol != 'P'){
+                if ((usarioRol.equals("A")) || (usarioRol.equals("O"))){
                     panelManager.mostrarListadoTurnos();
                 }else {
                     panelManager.mostrarPedidoTurno();
@@ -103,7 +103,7 @@ public class PanelMenuPrincipal extends JPanel {
         panelBotonTurnos.add(botonTurnos,BorderLayout.SOUTH);
         panelBotones.add(panelBotonTurnos,c);
 
-        if (usarioRol != 'P'){
+        if (usarioRol.equals("A") || usarioRol.equals("O")){
 
             //Ahora repetimos para el de pacientes
             panelBotonPacientes=new JPanel();

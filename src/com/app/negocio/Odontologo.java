@@ -1,7 +1,5 @@
 package com.app.negocio;
 
-import java.io.Serializable;
-
 public class Odontologo extends Persona  {
 
     private int matricula;

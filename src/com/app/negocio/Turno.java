@@ -1,18 +1,14 @@
 package com.app.negocio;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Turno {
+public class Turno implements Serializable {
     private Long id;
-    private Date fecha;
-    private Date hora;
+    private Date fechaHora;
     private Paciente paciente;
     private Odontologo odontologo;
     private String estadoTurno; //L - Libre, R - Reservado
-
-    public Turno() {
-        //Constructor
-    }
 
     public long getId() {
         return id;
@@ -22,20 +18,12 @@ public class Turno {
         this.id = id;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaHora() {
+        return fechaHora;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Date getHora() {
-        return hora;
-    }
-
-    public void setHora(Date hora) {
-        this.hora = hora;
+    public void setFechaHora(Date fechaHora) {
+        this.fechaHora = fechaHora;
     }
 
     public Paciente getPaciente() {
@@ -62,8 +50,4 @@ public class Turno {
         this.estadoTurno = estadoTurno;
     }
 
-    public int reservarTurno(Turno turno){
-
-        return 1;
-    }
 }

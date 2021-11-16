@@ -9,6 +9,8 @@ public interface ITurnoDAO {
 
     public Turno recuperar(Long id);
 
+    public ArrayList<Turno> recuperarTurnoLibreByOdontologo(Long idOdontologo);
+
     public ArrayList<Turno> listar ();
 
 }

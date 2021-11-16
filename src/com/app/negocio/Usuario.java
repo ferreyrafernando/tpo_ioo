@@ -5,8 +5,7 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
     private String usuario;
     private String password;
-
-    private Character rol; //A - Administrador; O - Odontologo; P - Paciente
+    private String rol; //A - Administrador; O - Odontologo; P - Paciente
 
     private long id;
 
@@ -38,17 +37,13 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public Character getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(Character rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 
-    public Usuario login(String usuario, String password){
-        Usuario userLogged = new Usuario();
 
-        return userLogged;
-    }
 }

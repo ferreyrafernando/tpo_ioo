@@ -83,7 +83,7 @@ public class PacienteDAO implements IPacienteDAO{
         Paciente resultado = null;
 
         for(Paciente pa: pacientes) {
-            System.out.println(pa.getUsuario().getId());
+            System.out.println("UserM: " + userName);
             if (pa.getUsuario().getUsuario().equals(userName))
                 resultado = pa;
 

@@ -1,18 +1,16 @@
 package com.app.ui;
 
-
 import com.app.negocio.Usuario;
-import com.app.service.UsuarioService;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class LoginManager {
     private PanelLogin panelLogin;
-    private PanelManager panelManager;
     private JFrame jframeLogin;
     public void showFrame(){
         jframeLogin.setVisible(true);
@@ -36,12 +34,12 @@ public class LoginManager {
     }
 
     public void mostrarPantallaMenuPrincipal(Usuario usuario){
-        PanelManager panelManager = new PanelManager();
-        panelManager.setUserLogged(usuario);
-        panelManager.armarManager(usuario.getRol());
+        PanelManager panelMgr = new PanelManager();
+        panelMgr.setUserLogged(usuario);
+        panelMgr.armarManager(usuario.getRol());
         jframeLogin.setVisible(false);
-        panelManager.showFrame();
-        panelManager.mostrarPantallaMenuPrincipal();
+        panelMgr.showFrame();
+        panelMgr.mostrarPantallaMenuPrincipal();
 
     }
     public void mostrarPantallaLogin(){

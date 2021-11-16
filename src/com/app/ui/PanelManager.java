@@ -37,7 +37,7 @@ public class PanelManager {
         this.userLogged = user;
     }
 
-    public void armarManager(Character usarioRol){
+    public void armarManager(String usarioRol){
 
         jframe = new JFrame();
         jframe.setBounds(500,250,800,600);
@@ -54,7 +54,7 @@ public class PanelManager {
         panelMenuPrincipal=new PanelMenuPrincipal();
         panelMenuPrincipal.armarPanelMenuPrincipal(this, usarioRol);
 
-        if (usarioRol == 'P'){ // Si el usuario es de tipo Paciente, solo le armo el panel del menu principal y el de pedido de turno
+        if (usarioRol.equals("P")){ // Si el usuario es de tipo Paciente, solo le armo el panel del menu principal y el de pedido de turno
             panelPedidoTurno=new PanelPedidoTurno();
             panelPedidoTurno.armarPanelPedidoTurno(this, this.getUserLogged());
         }else{
