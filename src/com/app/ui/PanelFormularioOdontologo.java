@@ -113,6 +113,7 @@ public class PanelFormularioOdontologo extends JPanel {
 
 
 
+
         panelBotonera.add(btnGuardar,b1);
         panelBotonera.add(btnCancelar,b2);
 
