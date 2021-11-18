@@ -2,8 +2,8 @@ package com.app.ui;
 
 import com.app.negocio.Odontologo;
 import com.app.negocio.Paciente;
+import com.app.negocio.Turno;
 import com.app.negocio.Usuario;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,6 +17,7 @@ public class PanelManager {
     private PanelListaPacientes panelListaPacientes;
     private PanelListaTurnos panelListaTurnos;
     private PanelPedidoTurno panelPedidoTurno;
+    private PanelPedidoTurnoAdmin panelPedidoTurnoAdmin;
     private PanelFormularioOdontologo panelFormularioOdontologo;
     private PanelFormularioPaciente panelFormularioPaciente;
 
@@ -58,6 +59,9 @@ public class PanelManager {
             panelPedidoTurno=new PanelPedidoTurno();
             panelPedidoTurno.armarPanelPedidoTurno(this, this.getUserLogged());
         }else{
+            panelPedidoTurnoAdmin=new PanelPedidoTurnoAdmin();
+            panelPedidoTurnoAdmin.armarPanelPedidoTurnoAdmin(this);
+
             panelListaTurnos=new PanelListaTurnos();
             panelListaTurnos.armarPanelListaTurnos(this);
 
@@ -99,8 +103,11 @@ public class PanelManager {
         jframe.getContentPane().repaint();
     }
 
-    public void mostrarListadoTurnos(){
+    public void mostrarListadoTurnos(Boolean refresh){
         jframe.getContentPane().removeAll();
+        if (refresh){
+            panelListaTurnos.getListaTurnos();
+        }
         jframe.getContentPane().add(panelListaTurnos);
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
@@ -109,6 +116,20 @@ public class PanelManager {
     public void mostrarPedidoTurno(){
         jframe.getContentPane().removeAll();
         jframe.getContentPane().add(panelPedidoTurno);
+        jframe.getContentPane().validate();
+        jframe.getContentPane().repaint();
+    }
+
+    public void mostrarPedidoTurnoAdmin(Turno turno){
+        jframe.getContentPane().removeAll();
+        jframe.getContentPane().add(panelPedidoTurnoAdmin);
+
+        if (turno != null){
+            panelPedidoTurnoAdmin.llenarControles(turno);
+        }else{
+            panelPedidoTurnoAdmin.limpiarControles();
+        }
+
         jframe.getContentPane().validate();
         jframe.getContentPane().repaint();
     }

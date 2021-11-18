@@ -18,7 +18,6 @@ import javax.swing.*;
 public class PanelLogin extends JPanel implements ActionListener {
 
     private LoginManager loginManager;
-    //private PanelManager panelManager;
     private JPanel principal;
     private JPanel iconoTitulo;
     private JPanel subFormulario;
@@ -60,10 +59,11 @@ public class PanelLogin extends JPanel implements ActionListener {
 
 
         //Aca vamos a poner el icono, subtitulo y el titulo, por lo que los creamos
-        titulo=new JLabel("Login", SwingConstants.CENTER);
-        titulo.setFont(new Font("Raleway",Font.BOLD,60));
-        subtitulo=new JLabel("Bienvenido al sistema de turnos");
+        titulo=new JLabel("Bienvenido al sistema de turnos", SwingConstants.CENTER);
+        titulo.setFont(new Font("Raleway",Font.BOLD,40));
+        subtitulo=new JLabel("Login", SwingConstants.CENTER);
         subtitulo.setFont(new Font("Raleway",Font.PLAIN,20));
+
 
         titulos=new JPanel();
         titulos.setLayout(new BorderLayout());

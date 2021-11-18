@@ -98,7 +98,7 @@ public class PanelListaPacientes extends JPanel{
         contenidoTable.addColumn("Usuario");
         contenidoTable.addColumn("Clave");
 
-        getListaPacientes();
+        this.getListaPacientes();
 
         add(panelBotonera, BorderLayout.SOUTH);
         add(scrollPane, BorderLayout.CENTER);

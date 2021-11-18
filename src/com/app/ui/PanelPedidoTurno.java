@@ -13,10 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class PanelPedidoTurno extends JPanel {
 
@@ -31,10 +29,8 @@ public class PanelPedidoTurno extends JPanel {
     private JTextField txtPaciente;
     private JLabel lblOdontologo;
     private JComboBox cboOdontologo;
- //   private static final String NOT_SELECTABLE_OPTION_OD = " - Seleccione un Odontologo - ";
     private JLabel lblFechaTurno;
     private JComboBox cboTurnoOdontologo;
-  //  private static final String NOT_SELECTABLE_OPTION_TUR = " - Seleccione un Turno Disponible - ";
     private JPanel panelComponentes;
 
     //Botonera

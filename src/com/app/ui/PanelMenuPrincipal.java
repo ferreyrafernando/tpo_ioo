@@ -51,10 +51,9 @@ public class PanelMenuPrincipal extends JPanel {
         Arrancamos haciendo el panel para el titulo y el titulo*/
 
         panelTitulo=new JPanel();
-        titulo=new JLabel("Menú principal");
+        titulo=new JLabel("Menú Principal");
         titu=new Font("Raleway",Font.PLAIN,48);
         atributos=titu.getAttributes();
-        atributos.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
         titulo.setFont(titu.deriveFont(atributos));
 
         //Finalmente, agregamos ambas cosas
@@ -83,7 +82,7 @@ public class PanelMenuPrincipal extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Se apretó el botón de Turnos");
                 if ((usarioRol.equals("A")) || (usarioRol.equals("O"))){
-                    panelManager.mostrarListadoTurnos();
+                    panelManager.mostrarListadoTurnos(false);
                 }else {
                     panelManager.mostrarPedidoTurno();
                 }

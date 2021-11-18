@@ -2,8 +2,7 @@ package com.app.dao;
 
 import com.app.negocio.Turno;
 
-import java.util.ArrayList;
-import java.util.ListIterator;
+import java.util.*;
 
 public class TurnoDAO implements ITurnoDAO{
 
@@ -43,6 +42,8 @@ public class TurnoDAO implements ITurnoDAO{
 
         for(Object obj: lista)
             turnos.add((Turno) obj);
+
+        turnos.sort(Comparator.comparing(Turno::getFechaHora));
 
         return turnos;
     }
