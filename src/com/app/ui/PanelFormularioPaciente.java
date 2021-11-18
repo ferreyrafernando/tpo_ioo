@@ -67,29 +67,68 @@ public class PanelFormularioPaciente extends JPanel {
 
 
         panelComponentes = new JPanel();
-        panelComponentes.add(lblID);
-        panelComponentes.add(txtID);
-        panelComponentes.add(lblNombre);
-        panelComponentes.add(txtNombre);
-        panelComponentes.add(lblApellido);
-        panelComponentes.add(txtApellido);
-        panelComponentes.add(lblDNI);
-        panelComponentes.add(txtDNI);
-        panelComponentes.add(lblDomicilio);
-        panelComponentes.add(txtDomicilio);
-        panelComponentes.add(lblFechaAlta);
-        panelComponentes.add(txtFechaAlta);
-        panelComponentes.add(lblUsuario);
-        panelComponentes.add(txtUsuario);
-        panelComponentes.add(lblClave);
-        panelComponentes.add(txtClave);
+        panelComponentes.setLayout(new GridBagLayout());
+
+        GridBagConstraints textos=new GridBagConstraints();
+        GridBagConstraints formularios=new GridBagConstraints();
+        formularios.ipady = 40;
+        formularios.weightx = 2;
+        formularios.gridx=2;
+        formularios.gridwidth = 3;
+        formularios.gridheight=2;
+        formularios.insets=new Insets(0,0,0,50);
+        formularios.anchor= GridBagConstraints.WEST;
+        formularios.fill=GridBagConstraints.BOTH;
+
+        textos.anchor=GridBagConstraints.EAST;
+        textos.insets=new Insets(0,50,0,0);
+        textos.weightx = 0.5;
+        textos.gridx=1;
+        textos.gridheight=2;
+        textos.gridwidth=1;
+        textos.fill=GridBagConstraints.BOTH;
+
+        panelComponentes.add(lblID,textos);
+        panelComponentes.add(txtID,formularios);
+        panelComponentes.add(lblNombre,textos);
+        panelComponentes.add(txtNombre,formularios);
+        panelComponentes.add(lblApellido,textos);
+        panelComponentes.add(txtApellido,formularios);
+        panelComponentes.add(lblDNI,textos);
+        panelComponentes.add(txtDNI,formularios);
+        panelComponentes.add(lblDomicilio,textos);
+        panelComponentes.add(txtDomicilio,formularios);
+        panelComponentes.add(lblFechaAlta,textos);
+        panelComponentes.add(txtFechaAlta,formularios);
+        panelComponentes.add(lblUsuario,textos);
+        panelComponentes.add(txtUsuario,formularios);
+        panelComponentes.add(lblClave,textos);
+        panelComponentes.add(txtClave,formularios);
 
 
         btnGuardar = new JButton("Guardar");
         btnCancelar = new JButton("Cancelar");
         panelBotonera = new JPanel();
-        panelBotonera.add(btnGuardar);
-        panelBotonera.add(btnCancelar);
+
+        btnCancelar.setFont(new Font("Raleway",Font.PLAIN,15));
+        btnGuardar.setFont(new Font("Raleway",Font.PLAIN,15));
+        panelBotonera.setLayout(new GridBagLayout());
+
+        Dimension botones=new Dimension(150,45);
+
+        GridBagConstraints b1=new GridBagConstraints();
+        b1.gridx=1;
+        b1.insets=new Insets(0,0,0,20);
+        b1.fill=GridBagConstraints.BOTH;
+        btnGuardar.setPreferredSize(botones);
+
+        GridBagConstraints b2=new GridBagConstraints();
+        b2.gridx=2;
+        b2.fill=GridBagConstraints.BOTH;
+        btnCancelar.setPreferredSize(botones);
+
+        panelBotonera.add(btnGuardar,b1);
+        panelBotonera.add(btnCancelar,b2);
 
         add(panelComponentes, BorderLayout.CENTER);
         add(panelBotonera, BorderLayout.SOUTH);

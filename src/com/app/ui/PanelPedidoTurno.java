@@ -63,21 +63,58 @@ public class PanelPedidoTurno extends JPanel {
         cboTurnoOdontologo = new JComboBox();
 
         panelComponentes = new JPanel();
-        panelComponentes.add(lblPaciente);
-        panelComponentes.add(txtPaciente);
+        panelComponentes.setLayout(new GridBagLayout());
 
-        panelComponentes.add(lblOdontologo);
-        panelComponentes.add(cboOdontologo);
-        panelComponentes.add(lblFechaTurno);
-        panelComponentes.add(cboTurnoOdontologo);
+        GridBagConstraints textos=new GridBagConstraints();
+        GridBagConstraints formularios=new GridBagConstraints();
+        formularios.ipady = 40;
+        formularios.weightx = 2;
+        formularios.gridx=2;
+        formularios.gridwidth = 3;
+        formularios.gridheight=2;
+        formularios.insets=new Insets(0,0,0,50);
+        formularios.anchor= GridBagConstraints.WEST;
+        formularios.fill=GridBagConstraints.BOTH;
+
+        textos.anchor=GridBagConstraints.EAST;
+        textos.insets=new Insets(0,50,0,0);
+        textos.weightx = 0.5;
+        textos.gridx=1;
+        textos.gridheight=2;
+        textos.gridwidth=1;
+        textos.fill=GridBagConstraints.BOTH;
+
+        panelComponentes.add(lblPaciente,textos);
+        panelComponentes.add(txtPaciente,formularios);
+
+        panelComponentes.add(lblOdontologo,textos);
+        panelComponentes.add(cboOdontologo,formularios);
+        panelComponentes.add(lblFechaTurno,textos);
+        panelComponentes.add(cboTurnoOdontologo,formularios);
 
         //Creacion Botonera
         btnGuardar = new JButton("Guardar");
         btnCancelar = new JButton("Cancelar");
 
         panelBotonera = new JPanel();
-        panelBotonera.add(btnGuardar);
-        panelBotonera.add(btnCancelar);
+        panelBotonera.setLayout(new GridBagLayout());
+
+        Dimension botones=new Dimension(150,45);
+
+        GridBagConstraints b1=new GridBagConstraints();
+        b1.gridx=1;
+        b1.insets=new Insets(0,0,0,20);
+        b1.fill=GridBagConstraints.BOTH;
+        btnGuardar.setPreferredSize(botones);
+
+        GridBagConstraints b2=new GridBagConstraints();
+        b2.gridx=2;
+        b2.fill=GridBagConstraints.BOTH;
+        btnCancelar.setPreferredSize(botones);
+
+
+        panelBotonera.add(btnGuardar,b1);
+        panelBotonera.add(btnCancelar,b2);
 
         //Listado - Grilla - Tabla de Odontologos
         if (paciente != null){

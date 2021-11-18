@@ -47,12 +47,6 @@ public class PanelFormularioOdontologo extends JPanel {
         Font a=new Font("Raleway",Font.PLAIN,18);
 
 
-
-
-        JLabel titulo=new JLabel("Ingrese los datos",SwingConstants.CENTER);
-        titulo.setVerticalAlignment(SwingConstants.BOTTOM);
-        titulo.setFont(new Font("Raleway",Font.BOLD,26));
-
         lblID.setFont(a);
         lblNombre.setFont(a);
         lblApellido.setFont(a);
@@ -120,7 +114,7 @@ public class PanelFormularioOdontologo extends JPanel {
 
         add(panelComponentes, BorderLayout.CENTER);
         add(panelBotonera, BorderLayout.SOUTH);
-        add(titulo,BorderLayout.NORTH);
+
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
