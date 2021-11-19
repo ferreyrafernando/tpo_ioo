@@ -9,10 +9,6 @@ public class Usuario implements Serializable {
 
     private long id;
 
-    public Usuario() {
-        //Constructor
-    }
-
     public long getId() {
         return id;
     }
